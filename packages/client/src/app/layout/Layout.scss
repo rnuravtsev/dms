@@ -1,0 +1,11 @@
+.app {
+  display: grid;
+  grid-auto-rows: auto 1fr auto;
+  grid-template-columns: 1fr;
+  gap: $scale-4;
+
+  max-width: 1200px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: $scale-4;
+}

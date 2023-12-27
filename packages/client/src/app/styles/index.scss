@@ -1,0 +1,12 @@
+@import 'modern-normalize/modern-normalize.css';
+@import "fonts";
+
+body {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.box {
+  padding: $scale-4;
+  border-radius: $scale-2;
+  box-shadow: 0 0 10px 1px rgba(5, 5, 5, 0.08)
+}
