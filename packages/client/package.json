@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
+    "stylelint": "stylelint --fix .",
     "test": "jest ./"
   },
   "dependencies": {
@@ -31,6 +32,9 @@
     "lefthook": "^1.3.9",
     "prettier": "^2.7.1",
     "sass": "1.62.1",
+    "stylelint": "^16.1.0",
+    "stylelint-config-scss-favorite": "^1.0.6",
+    "stylelint-scss": "^6.0.0",
     "ts-jest": "^28.0.8",
     "typescript": "^4.8.2",
     "vite": "^3.0.7"
