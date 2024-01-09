@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -13,13 +13,14 @@
     "test": "jest ./"
   },
   "dependencies": {
-    "antd": "5.12.5",
     "dotenv": "^16.0.2",
     "eslint-config-prettier": "^8.5.0",
     "modern-normalize": "2.0.0",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "6.1.0",
+    "ymap3-components": "1.0.7"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
@@ -29,6 +30,8 @@
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
     "@vitejs/plugin-react": "^2.0.1",
+    "@yandex/ymaps3-types": "0.0.20",
+    "classnames": "2.5.1",
     "eslint": "^8.23.0",
     "jest": "^28",
     "jest-environment-jsdom": "^29.0.1",
@@ -39,8 +42,8 @@
     "stylelint-config-scss-favorite": "^1.0.6",
     "stylelint-scss": "^6.0.0",
     "ts-jest": "^28.0.8",
-    "typescript": "^4.8.2",
-    "vite": "^3.0.7"
+    "typescript": "^5.3.3",
+    "vite": "^4.5.1"
   },
   "license": "MIT"
 }
