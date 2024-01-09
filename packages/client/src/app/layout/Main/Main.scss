@@ -36,6 +36,9 @@
 }
 
 .field__list {
+
+  @include custom-scroll-bar();
+
   display: flex;
   flex-direction: column;
   gap: $scale-3;
@@ -46,8 +49,6 @@
   padding: 0;
 
   list-style: none;
-
-  @include custom-scroll-bar();
 }
 
 .field__item {
