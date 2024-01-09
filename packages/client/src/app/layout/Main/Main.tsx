@@ -15,6 +15,7 @@ type Clinics = typeof clinics
 const enum SearchMode {
   Address = 'ADDRESS',
   Label = 'LABEL',
+  Id = 'ID',
 }
 
 const SHOW_ITEMS_QUANTITY = 10
@@ -24,6 +25,8 @@ const filterFunctions = {
     el.address.toLowerCase().includes(value.toLowerCase()),
   [SearchMode.Label]: (el: ElementOfArray<Clinics>, value: string) =>
     el.label.toLowerCase().includes(value.toLowerCase()),
+  [SearchMode.Id]: (el: ElementOfArray<Clinics>, value: string) =>
+    el.id === +value,
 }
 
 const filterClinics = (clinics: Clinics, type: SearchMode, value: string) => {
@@ -102,6 +105,17 @@ export const Main: FC<MainProps> = props => {
                   />
                   Название
                 </label>
+                <label className="search-mode__label">
+                  <input
+                    onChange={searchModeInputHandleChange}
+                    className="search-mode__input"
+                    name="search-mode"
+                    type="radio"
+                    checked={searchMode === SearchMode.Id}
+                    id="search-mode-id"
+                  />
+                  id
+                </label>
               </div>
             </div>
             <p className="clinics__counter">
@@ -116,24 +130,24 @@ export const Main: FC<MainProps> = props => {
               }`}
               onChange={inputHandleChange}
             />
-            <InfiniteScroll
-              className="field__list"
-              loader={false}
-              dataLength={startIndex.current * SHOW_ITEMS_QUANTITY}
-              hasMore={clinics.length > filteredClinics.length}
-              next={addMoreClinics}
-              height={300}
-              scrollThreshold={0.9}
-              endMessage="Клиник больше нет">
-              {filteredClinics.map(({ id, label, address }) => (
-                <li className="field__item" key={id}>
-                  <p style={{ color: 'blue' }}>{id}</p>
-                  <p>{label}</p>
-                  <p>{address}</p>
-                </li>
-              ))}
-            </InfiniteScroll>
           </div>
+          <InfiniteScroll
+            className="clinics__list"
+            loader={false}
+            dataLength={startIndex.current * SHOW_ITEMS_QUANTITY}
+            hasMore={clinics.length > filteredClinics.length}
+            next={addMoreClinics}
+            height={500}
+            scrollThreshold={0.9}
+            endMessage="Клиник больше нет">
+            {filteredClinics.map(({ id, label, address }) => (
+              <li className="field__item" key={id}>
+                <p style={{ color: 'blue' }}>{id}</p>
+                <p>{label}</p>
+                <p>{address}</p>
+              </li>
+            ))}
+          </InfiniteScroll>
         </div>
       </aside>
       <Map />

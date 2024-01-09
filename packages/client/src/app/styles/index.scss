@@ -8,6 +8,6 @@ body {
 
 .box {
   padding: $scale-4;
-  border-radius: $scale-2;
+  border-radius: $border-radius-default;
   box-shadow: 0 0 10px 1px rgb(5 5 5 / 8%)
 }
