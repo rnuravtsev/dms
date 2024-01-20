@@ -1,22 +1,36 @@
 import classNames from 'classnames'
 import type { FC } from 'react'
-
+import { useCallback, useState } from 'react'
 import './Main.scss'
+import { Map } from '../../../widgets/Map/Map'
+import { location } from './utils'
+import { ClinicsList } from '../../../widgets/ClinicsList/ClinicsList'
+import { Clinics } from '../../../shared/types'
 
-interface MainProps {
+type MainProps = {
   className?: string
 }
 
-export const Main: FC<MainProps> = props => {
-  const { className = '' } = props
+export const Main: FC<MainProps> = ({ className = '' }) => {
+  const [mapCenter, setMapCenter] = useState(location)
+
+  const handleClinicClick = useCallback(
+    ({ longitude, latitude }: Pick<ElementOfArray<Clinics>, 'coordinates'>) => {
+      setMapCenter({
+        center: [+longitude, +latitude],
+        zoom: 16,
+        duration: 750,
+      })
+    },
+    []
+  )
+
   return (
     <main className={classNames('main box', className)}>
-      <iframe
-        className="main__map"
-        src="https://yandex.ru/map-widget/v1/?um=constructor%3Ada7fd706b6c161e3e6c675f3867b4bb1f3cb74a9c2c6d54bf05c7bbc35a70a08&amp;source=constructor"
-        width="100%"
-        height="100%"
-        frameBorder="0"></iframe>
+      <aside>
+        <ClinicsList onItemClick={handleClinicClick} />
+      </aside>
+      <Map mapCenter={mapCenter} />
     </main>
   )
 }

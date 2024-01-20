@@ -1,12 +1,14 @@
 @import 'modern-normalize/modern-normalize.css';
-@import "fonts";
+@import 'mixins';
+@import 'fonts';
+@import 'react-virtualized/styles.css';
 
 body {
   font-family: 'Fira Sans', sans-serif;
 }
 
 .box {
-  padding: $scale-4;
-  border-radius: $scale-2;
+  padding: $scale-5;
+  border-radius: $border-radius-default;
   box-shadow: 0 0 10px 1px rgb(5 5 5 / 8%)
 }

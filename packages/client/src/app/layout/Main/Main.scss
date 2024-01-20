@@ -1,3 +1,38 @@
-.main__map {
-  border-radius: $scale-4;
+@import "../../../styles/mixins";
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(auto, 450px) 1fr;
+  gap: $scale-4;
+}
+
+.search-mode {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-mode__input {
+  margin-right: $scale-1;
+}
+
+.search-mode__inputs {
+  display: flex;
+  gap: $scale-2;
+}
+
+.search-mode__title {
+  margin: 0;
+  margin-bottom: $scale-1;
+  font-weight: 400;
+  color: gray;
+}
+
+.search-mode__label {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.clinics__quantity {
+  color: $primary;
 }

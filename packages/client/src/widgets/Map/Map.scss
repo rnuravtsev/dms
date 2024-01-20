@@ -1,0 +1,28 @@
+.map {
+  height: 100%;
+
+  canvas {
+    border-radius: $border-radius-default;
+  }
+}
+
+.pin {
+  position: relative;
+}
+
+.pin__marker {
+  cursor: pointer;
+  transform: translate(-50%, calc(-50% - 24px));
+  box-sizing: border-box;
+}
+
+.pin__id {
+  cursor: pointer;
+
+  position: absolute;
+  transform: translate(-50%, calc(-52% - 80px));
+
+  margin: 0;
+
+  color: white;
+}

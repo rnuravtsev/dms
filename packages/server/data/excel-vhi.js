@@ -1,12 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const axios = require('axios')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const XLSX = require('xlsx')
+import axios from 'axios'
+import XLSX from 'xlsx'
+import dotenv from 'dotenv'
+
+dotenv.config({ path: '../../../.env' })
 
 // Загрузка данных из Excel файла
 const workbook = XLSX.readFile(
-  '/Users/albertmuravcev/WebstormProjects/dms/vhi-input.xlsx'
+  '/Users/albertmuravcev/WebstormProjects/dms/packages/server/data/vhi-data.xlsx'
 )
+
 const firstSheetName = workbook.SheetNames[0]
 const data = XLSX.utils.sheet_to_json(workbook.Sheets[firstSheetName])
 
@@ -15,8 +17,8 @@ const formatRequestString = str => {
 }
 
 async function geocodeAddress(address) {
-  const apiKey = '9e879368-809c-4e7c-86b3-659954dd1d3c' // Замените на ваш API ключ Яндекс
-  const url = `https://geocode-maps.yandex.ru/1.x/?apikey=${apiKey}&format=json&geocode=${formatRequestString(
+  const apiKey = process.env.YANDEX_API // Замените на ваш API ключ Яндекс
+  const url = `https://geocode-maps.yandex.ru/1.x/?apikey=327066e5-095c-4c21-bc8e-3c6e71d84ff9&format=json&geocode=${formatRequestString(
     address
   )}`
 
@@ -55,7 +57,7 @@ async function geocodeAddresses() {
   const newWorkbook = XLSX.utils.book_new()
   const newSheet = XLSX.utils.json_to_sheet(newData)
   XLSX.utils.book_append_sheet(newWorkbook, newSheet, 'Results')
-  XLSX.writeFile(newWorkbook, 'vhi-output.xlsx')
+  XLSX.writeFile(newWorkbook, 'vhi-output-data.xlsx')
 }
 
 geocodeAddresses()

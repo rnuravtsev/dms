@@ -7,12 +7,11 @@ import { Footer } from './Footer/Footer'
 
 import './Layout.scss'
 
-interface LayoutProps {
+type LayoutProps = {
   className?: string
 }
 
-export const Layout: FC<LayoutProps> = props => {
-  const { className = '' } = props
+export const Layout: FC<LayoutProps> = ({ className = '' }) => {
   return (
     <div className={classNames('app', className)}>
       <Header className="app__header" />

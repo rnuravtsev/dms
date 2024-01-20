@@ -1,4 +1,4 @@
-import './styles/index.scss'
+import '../styles/index.scss'
 import { Layout } from './layout/Layout'
 
 export function App() {
