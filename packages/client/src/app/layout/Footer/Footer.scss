@@ -1,1 +1,14 @@
-// TODO: Delete after adding styles
+.footer {
+  display: flex;
+}
+
+.footer__sign {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.footer__heart {
+  font-size: 20px;
+  color: red;
+}

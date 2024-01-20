@@ -5,7 +5,7 @@
   font-display: swap;
   src:
           local('Fira Sans'),
-          url('../vendors/FiraSans-Regular.woff2') format('woff2');
+          url('../app/vendors/FiraSans-Regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -15,5 +15,5 @@
   font-display: swap;
   src:
           local('Fira Sans'),
-          url('../vendors/FiraSans-Bold.woff2') format('woff2');
+          url('../app/vendors/FiraSans-Bold.woff2') format('woff2');
 }

@@ -20,6 +20,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-infinite-scroll-component": "6.1.0",
+    "react-virtualized": "9.22.5",
+    "throttle-debounce": "5.0.0",
     "ymap3-components": "1.0.7"
   },
   "devDependencies": {
@@ -27,6 +29,8 @@
     "@types/jest": "^28.1.8",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/react-virtualized": "9.21.29",
+    "@types/throttle-debounce": "5.0.2",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
     "@vitejs/plugin-react": "^2.0.1",

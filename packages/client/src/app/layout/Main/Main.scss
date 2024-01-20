@@ -1,77 +1,9 @@
-@import "../../styles/mixins";
+@import "../../../styles/mixins";
 
 .main {
   display: grid;
   grid-template-columns: minmax(auto, 450px) 1fr;
-}
-
-.clinics {
-  display: grid;
-  gap: $scale-3;
-  padding-right: $scale-4;
-}
-
-.clinics__field {
-  padding-top: 10px;
-  border-top: 1px solid lightgrey;
-}
-
-.clinics__meta {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: $scale-3;
-  align-items: end;
-}
-
-.clinics__counter {
-  margin: 0;
-}
-
-.field {
-  position: relative;
-}
-
-.clinics__list {
-
-  @include custom-scroll-bar();
-
-  display: flex;
-  flex-direction: column;
-  gap: $scale-3;
-
-  max-width: 450px;
-  margin: 0;
-  margin-top: $scale-4;
-  padding: 0;
-
-  list-style: none;
-}
-
-.field__item {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  gap: $scale-1;
-
-  font-size: 14px;
-
-  &::before {
-    content: '';
-
-    position: absolute;
-    top: -5px;
-    left: -5px;
-
-    width: 35px;
-    height: 1px;
-
-    background-color: lightgrey;
-  }
-
-  p {
-    margin: 0;
-  }
+  gap: $scale-4;
 }
 
 .search-mode {

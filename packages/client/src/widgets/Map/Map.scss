@@ -1,5 +1,5 @@
 .map {
-  height: 600px;
+  height: 100%;
 
   canvas {
     border-radius: $border-radius-default;
@@ -17,8 +17,12 @@
 }
 
 .pin__id {
+  cursor: pointer;
+
   position: absolute;
   transform: translate(-50%, calc(-52% - 80px));
+
   margin: 0;
+
   color: white;
 }
