@@ -4,8 +4,9 @@
   display: grid;
   grid-template-rows: auto auto 1fr;
   gap: $scale-3;
-  padding-right: $scale-4;
+
   height: 100%;
+  padding-right: $scale-4;
 }
 
 .clinics__field {
@@ -15,8 +16,8 @@
 }
 
 .clinics__input {
-  padding: $scale-2;
   width: 100%;
+  padding: $scale-2;
   border: 1px solid lightgrey;
   border-radius: $scale-1;
 }
@@ -35,24 +36,29 @@
 
 .clinics__list {
   @include custom-scroll-bar();
+
   max-width: 450px;
 }
 
 .clinics__item {
-  padding: $scale-2;
   cursor: pointer;
-  border-radius: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 
   position: relative;
 
+  overflow: hidden;
+  display: -webkit-box;
+
+  padding: $scale-2;
+
   font-size: 14px;
+  text-overflow: ellipsis;
+
+  border-radius: 8px;
 
   transition: background-color .25s ease;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
 
   &:hover {
     background-color: papayawhip;
@@ -60,8 +66,8 @@
 
   p {
     margin: 0;
-    text-wrap: balance;
     line-height: 1.25em;
+    text-wrap: balance;
   }
 }
 
