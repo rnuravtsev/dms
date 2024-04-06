@@ -1,76 +1,28 @@
-### Как запускать?
+# DMS
+---
+### Description:
+The DMS is a web application designed to provide users with an intuitive interface for visualizing all nearby clinics on a map. Whether you're seeking medical assistance or just want to explore the healthcare options in your area, DMS offers a convenient solution.
 
-1. Убедитесь что у вас установлен `node` и `docker`
-2. Выполните команду `yarn bootstrap` - это обязательный шаг, без него ничего работать не будет :)
-3. Выполните команду `yarn dev`
-3. Выполните команду `yarn dev --scope=client` чтобы запустить только клиент
-4. Выполните команду `yarn dev --scope=server` чтобы запустить только server
+### Key Features:
+- Interactive Map: Utilizing modern mapping technologies, DMS displays all clinics in the vicinity, allowing users to easily navigate and explore.
+- Search Functionality: Users can search for specific clinics by name or location, streamlining the process of finding relevant healthcare services.
+- User-Friendly Interface: The application boasts a clean and intuitive interface, ensuring seamless navigation for users of all experience levels.
 
+### Technologies Used:
+- Frontend: HTML5, CSS3, TypeScript, React.
+- Mapping API: Integration with mapping services Yandex API to render and interact with the map interface.
 
-### Как добавить зависимости?
-В этом проекте используется `monorepo` на основе [`lerna`](https://github.com/lerna/lerna)
+### Contributing:
+Contributions to DMS are welcome! Feel free to submit bug reports, feature requests, or pull requests through the GitHub repository's issue tracker and pull request system.
 
-Чтобы добавить зависимость для клиента 
-```yarn lerna add {your_dep} --scope client```
+### License:
+This project is licensed under the MIT License. Feel free to modify and distribute the code for personal or commercial use.
 
-Для сервера
-```yarn lerna add {your_dep} --scope server```
+### Acknowledgments:
+We would like to express our gratitude to the developers of the various technologies and libraries used in this project, as well as the open-source community for their valuable contributions.
 
-И для клиента и для сервера
-```yarn lerna add {your_dep}```
+### Contact:
+For any inquiries or feedback regarding DMS, please contact us at telegram @rnuravtsev.
 
-
-Если вы хотите добавить dev зависимость, проделайте то же самое, но с флагом `dev`
-```yarn lerna add {your_dep} --dev --scope server```
-
-
-### Тесты
-
-Для клиента используется [`react-testing-library`](https://testing-library.com/docs/react-testing-library/intro/)
-
-```yarn test```
-
-### Линтинг
-
-```yarn lint```
-
-### Форматирование prettier
-
-```yarn format```
-
-### Production build
-
-```yarn build```
-
-И чтобы посмотреть что получилось
-
-
-`yarn preview --scope client`
-`yarn preview --scope server`
-
-## Хуки
-В проекте используется [lefthook](https://github.com/evilmartians/lefthook)
-Если очень-очень нужно пропустить проверки, используйте `--no-verify` (но не злоупотребляйте :)
-
-## Ой, ничего не работает :(
-
-Откройте issue, я приду :)
-
-## Автодеплой статики на vercel
-Зарегистрируйте аккаунт на [vercel](https://vercel.com/)
-Следуйте [инструкции](https://vitejs.dev/guide/static-deploy.html#vercel-for-git)
-В качестве `root directory` укажите `packages/client`
-
-Все ваши PR будут автоматически деплоиться на vercel. URL вам предоставит деплоящий бот
-
-## Production окружение в докере
-Перед первым запуском выполните `node init.js`
-
-
-`docker compose up` - запустит три сервиса
-1. nginx, раздающий клиентскую статику (client)
-2. node, ваш сервер (server)
-3. postgres, вашу базу данных (postgres)
-
-Если вам понадобится только один сервис, просто уточните какой в команде
-`docker compose up {sevice_name}`, например `docker compose up server`
+### Disclaimer:
+DMS is a personal project developed for educational and demonstration purposes. While efforts have been made to ensure the accuracy and reliability of the information provided, we advise users to verify details directly with the respective clinics before making any decisions or appointments.
