@@ -63,39 +63,43 @@ export const ClinicsList: FC<ClinicsListProps> = ({ onItemClick }) => {
           onChange={inputHandleChange}
         />
       </div>
-      <AutoSizer>
-        {({ width, height }) => (
-          <VirtualList
-            className="clinics"
-            width={width}
-            height={height}
-            rowHeight={80}
-            rowCount={clinics.length}
-            noRowsRenderer={() => <p className="clinics__empty">Нет данных</p>}
-            rowRenderer={({ key, index, style }) => {
-              const { id, name, address, coordinates } = clinics[index]
-              return (
-                <div
-                  className="clinics__item"
-                  style={style}
-                  key={key}
-                  onClick={() =>
-                    onItemClick({
-                      coordinates: {
-                        latitude: coordinates.latitude,
-                        longitude: coordinates.longitude,
-                      },
-                    })
-                  }>
-                  <p style={{ color: 'blue' }}>{id}</p>
-                  <p>{address}</p>
-                  <p>{name}</p>
-                </div>
-              )
-            }}
-          />
-        )}
-      </AutoSizer>
+      <div>
+        <AutoSizer>
+          {({ width, height }) => (
+            <VirtualList
+              className="clinics"
+              width={width}
+              height={height}
+              rowHeight={80}
+              rowCount={clinics.length}
+              noRowsRenderer={() => (
+                <p className="clinics__empty">Нет данных</p>
+              )}
+              rowRenderer={({ key, index, style }) => {
+                const { id, name, address, coordinates } = clinics[index]
+                return (
+                  <div
+                    className="clinics__item"
+                    style={style}
+                    key={key}
+                    onClick={() =>
+                      onItemClick({
+                        coordinates: {
+                          latitude: coordinates.latitude,
+                          longitude: coordinates.longitude,
+                        },
+                      })
+                    }>
+                    <p style={{ color: 'blue' }}>{id}</p>
+                    <p>{address}</p>
+                    <p>{name}</p>
+                  </div>
+                )
+              }}
+            />
+          )}
+        </AutoSizer>
+      </div>
     </>
   )
 }
