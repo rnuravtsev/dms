@@ -13,12 +13,12 @@ import {
   YMapHint,
 } from 'ymap3-components'
 import { YMapLocationRequest } from '@yandex/ymaps3-types'
-import { clinics } from '../../shared/adapters/clinicsAdapter'
-import MapPin from '../../assets/map-pin.svg?react'
+import MapPin from '../../assets/icons/map-pin.svg?react'
 
 import './Map.scss'
 import { useCallback } from 'react'
 import { MyHint } from './MyHint'
+import { useClinicsContext } from '../../context/clinics'
 
 type MapProps = {
   className?: string
@@ -27,6 +27,8 @@ type MapProps = {
 
 export const Map: FC<MapProps> = ({ className = '', mapCenter }) => {
   const getHint = useCallback(object => object?.properties?.hint, [])
+
+  const { clinics } = useClinicsContext()
 
   return (
     <div className={classNames('map', className)}>

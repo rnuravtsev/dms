@@ -1,13 +1,4 @@
-@import "~/styles/mixins";
-
-.clinics {
-  display: grid;
-  grid-template-rows: auto auto 1fr;
-  gap: $scale-3;
-
-  height: 100%;
-  padding-right: $scale-4;
-}
+@use "~/assets/styles/mixins";
 
 .clinics__field {
   position: relative;
@@ -34,8 +25,8 @@
 }
 
 
-.clinics__list {
-  @include custom-scroll-bar();
+.clinics {
+  @include mixins.custom-scroll-bar();
 
   max-width: 450px;
 }

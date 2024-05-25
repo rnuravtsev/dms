@@ -1,4 +1,4 @@
-export const enum SearchMode {
+export const enum SearchType {
   Address = 'ADDRESS',
   Id = 'ID',
 }

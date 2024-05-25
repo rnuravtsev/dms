@@ -2,10 +2,11 @@ import classNames from 'classnames'
 import type { FC } from 'react'
 import { useCallback, useState } from 'react'
 import './Main.scss'
-import { Map } from '../../../widgets/Map/Map'
+import { Map } from '../../components/Map/Map'
 import { location } from './utils'
-import { ClinicsList } from '../../../widgets/ClinicsList/ClinicsList'
-import { Clinics } from '../../../shared/types'
+import { ClinicsList } from '../../components/ClinicsList/ClinicsList'
+import { Clinics } from '../../shared/types'
+import { Sidebar } from '../../components/Sidebar/Sidebar'
 
 type MainProps = {
   className?: string
@@ -15,9 +16,9 @@ export const Main: FC<MainProps> = ({ className = '' }) => {
   const [mapCenter, setMapCenter] = useState(location)
 
   const handleClinicClick = useCallback(
-    ({ longitude, latitude }: Pick<ElementOfArray<Clinics>, 'coordinates'>) => {
+    ({ coordinates }: Pick<ElementOfArray<Clinics>, 'coordinates'>) => {
       setMapCenter({
-        center: [+longitude, +latitude],
+        center: [+coordinates.longitude, +coordinates.latitude],
         zoom: 16,
         duration: 750,
       })
@@ -27,9 +28,9 @@ export const Main: FC<MainProps> = ({ className = '' }) => {
 
   return (
     <main className={classNames('main box', className)}>
-      <aside>
+      <Sidebar>
         <ClinicsList onItemClick={handleClinicClick} />
-      </aside>
+      </Sidebar>
       <Map mapCenter={mapCenter} />
     </main>
   )

@@ -18,13 +18,12 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import '~/styles/vars.scss';`,
+        additionalData: `@use '~/assets/styles/vars.scss' as *;`,
       },
     },
   },
   resolve: {
     alias: {
-      app: path.join(__dirname, './src/app'),
       '~': path.join(__dirname, './src'),
     },
   },

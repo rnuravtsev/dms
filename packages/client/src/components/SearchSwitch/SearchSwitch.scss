@@ -1,0 +1,26 @@
+.search-type {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-type__input {
+  margin-right: $scale-1;
+}
+
+.search-type__inputs {
+  display: flex;
+  gap: $scale-2;
+}
+
+.search-type__title {
+  margin: 0;
+  margin-bottom: $scale-1;
+  font-weight: 400;
+  color: gray;
+}
+
+.search-type__label {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}

@@ -22,7 +22,7 @@
     "react-infinite-scroll-component": "6.1.0",
     "react-virtualized": "9.22.5",
     "throttle-debounce": "5.0.0",
-    "ymap3-components": "1.0.7"
+    "ymap3-components": "1.1.6"
   },
   "devDependencies": {
     "@testing-library/react": "^13.3.0",
@@ -34,7 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
     "@vitejs/plugin-react": "^2.0.1",
-    "@yandex/ymaps3-types": "0.0.20",
+    "@yandex/ymaps3-types": "0.0.27",
     "classnames": "2.5.1",
     "eslint": "^8.23.0",
     "jest": "^28",

@@ -1,0 +1,11 @@
+@import "../../assets/styles/mixins";
+
+.main {
+  display: grid;
+  grid-template-columns: minmax(auto, 450px) 1fr;
+  gap: $scale-4;
+}
+
+.clinics__quantity {
+  color: $primary;
+}
