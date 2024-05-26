@@ -9,15 +9,17 @@
 }
 
 .search-tab__input {
-  margin-right: $scale-1;
   display: none;
+  margin-right: $scale-1;
 }
 
 .search-tab__label {
   display: flex;
   align-items: center;
+
   margin: 0;
   padding: $scale-1 $scale-4;
+
   border: 1px solid lightgray;
   border-radius: 4px;
 
@@ -27,6 +29,6 @@
 }
 
 .search-tab__input_active {
-  background-color: blue;
   color: white;
+  background-color: blue;
 }
