@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import type { ChangeEventHandler, FC } from 'react'
 
 import { SearchType } from '../../Clinics/types'
+import { useSearchContext } from '../../../context/search'
 import './Input.scss'
 
 interface InputProps {
@@ -17,12 +18,18 @@ const placeholderMap: Record<SearchType, string> = {
 }
 
 export const Input: FC<InputProps> = props => {
+  const { searchInputValue, setSearchInputValue } = useSearchContext()
   const { className = '', searchType, onChange } = props
+
   return (
     <input
       className={classNames('input', className)}
       placeholder={`Поиск по ${placeholderMap[searchType]}`}
-      onChange={onChange}
+      value={searchInputValue}
+      onChange={e => {
+        onChange(e)
+        setSearchInputValue(e.target.value)
+      }}
     />
   )
 }

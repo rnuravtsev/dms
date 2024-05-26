@@ -10,6 +10,8 @@ import { SearchType } from '../components/Clinics/types'
 type InitialState = {
   searchType: SearchType
   setSearchType: Dispatch<SetStateAction<SearchType>>
+  searchInputValue: string
+  setSearchInputValue: Dispatch<SetStateAction<string>>
 }
 
 const SearchContext = createContext({} as InitialState)

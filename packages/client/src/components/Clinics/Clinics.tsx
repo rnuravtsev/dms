@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import { FC, useCallback } from 'react'
 import { ChangeEventHandler, useEffect, useRef } from 'react'
 import { debounce } from 'throttle-debounce'
 import VirtualList from 'react-virtualized/dist/es/List'
@@ -22,9 +22,15 @@ type ClinicsListProps = {
 
 export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
   const { clinics, setClinics } = useClinicsContext()
-  const { searchType, setSearchType } = useSearchContext()
+  const { searchType, setSearchType, searchInputValue, setSearchInputValue } =
+    useSearchContext()
 
   const listRef = useRef<number | string | undefined>(800)
+
+  const clearInputValue = useCallback(() => {
+    setSearchInputValue('')
+    setClinics(filteredClinics(clinicsJSON, searchType, ''))
+  }, [])
 
   useEffect(() => {
     listRef.current = document?.querySelector(
@@ -36,6 +42,10 @@ export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
     setSearchType(
       e.target.id.toUpperCase().split('-').reverse()[0] as SearchType
     )
+
+    if (searchInputValue) {
+      clearInputValue()
+    }
   }
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = debounce(

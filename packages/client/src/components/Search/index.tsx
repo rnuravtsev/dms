@@ -9,9 +9,16 @@ type SearchProps = { children: ReactNode }
 
 export const Search = ({ children }: SearchProps) => {
   const [searchType, setSearchType] = useState(() => SearchType.Address)
+  const [searchInputValue, setSearchInputValue] = useState('')
 
   return (
-    <SearchContextProvider initialState={{ searchType, setSearchType }}>
+    <SearchContextProvider
+      initialState={{
+        searchType,
+        setSearchType,
+        searchInputValue,
+        setSearchInputValue,
+      }}>
       {children}
     </SearchContextProvider>
   )
