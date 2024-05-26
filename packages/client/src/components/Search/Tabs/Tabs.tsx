@@ -33,21 +33,28 @@ export const Tabs: FC<SearchTypeProps> = props => {
 
   return (
     <div className={classNames('search-tabs', className)}>
-      <h4 className="search-tabs__title">Тип поиска:</h4>
       <div className="search-tabs__inputs">
-        {inputs.map(({ id, type, label }) => (
-          <label key={label} className="search-tab__label">
-            <input
-              id={id}
-              className="search-tab__input"
-              onChange={onChange}
-              name="search-type"
-              checked={searchMode === type}
-              type="radio"
-            />
-            {label}
-          </label>
-        ))}
+        {inputs.map(({ id, type, label }) => {
+          const isActive = searchMode === type
+
+          return (
+            <label
+              key={label}
+              className={classNames('search-tab__label', {
+                'search-tab__input_active': isActive,
+              })}>
+              <input
+                id={id}
+                className="search-tab__input"
+                onChange={onChange}
+                name="search-type"
+                checked={isActive}
+                type="radio"
+              />
+              {label}
+            </label>
+          )
+        })}
       </div>
     </div>
   )

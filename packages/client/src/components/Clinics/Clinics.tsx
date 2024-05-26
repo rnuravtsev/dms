@@ -32,7 +32,7 @@ export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
     )?.clientHeight
   }, [])
 
-  const handleRadioChange: ChangeEventHandler<HTMLInputElement> = e => {
+  const handleTabChange: ChangeEventHandler<HTMLInputElement> = e => {
     setSearchType(
       e.target.id.toUpperCase().split('-').reverse()[0] as SearchType
     )
@@ -48,7 +48,7 @@ export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
   return (
     <div className="clinics">
       <div className="clinics__search">
-        <Search.Tabs searchMode={searchType} onChange={handleRadioChange} />
+        <Search.Tabs searchMode={searchType} onChange={handleTabChange} />
         <Search.Counter count={clinics.length} />
         <Search.Input searchType={searchType} onChange={handleInputChange} />
       </div>
