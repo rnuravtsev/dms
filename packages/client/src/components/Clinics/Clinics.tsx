@@ -1,25 +1,29 @@
 import type { FC } from 'react'
-import { ChangeEventHandler, useEffect, useRef, useState } from 'react'
+import { ChangeEventHandler, useEffect, useRef } from 'react'
 import { debounce } from 'throttle-debounce'
 import VirtualList from 'react-virtualized/dist/es/List'
 import AutoSizer from 'react-virtualized/dist/es/AutoSizer'
-import { Clinics } from '../../shared/types'
+import { ClinicsType } from '../../shared/types'
 import { clinics as clinicsJSON } from '../../shared/adapters/clinicsAdapter'
 import { useClinicsContext } from '../../context/clinics'
-import { SearchSwitch } from '../SearchSwitch/SearchSwitch'
 
 import { SearchType } from './types'
-import './ClinicsList.scss'
 import { filteredClinics } from './utils'
+import { Search } from '../Search'
+import { useSearchContext } from '../../context/search'
+import './Clinics.scss'
 
 type ClinicsListProps = {
   className?: string
-  onItemClick: (item: Pick<ElementOfArray<Clinics>, 'coordinates'>) => unknown
+  onItemClick: (
+    item: Pick<ElementOfArray<ClinicsType>, 'coordinates'>
+  ) => unknown
 }
 
-export const ClinicsList: FC<ClinicsListProps> = ({ onItemClick }) => {
+export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
   const { clinics, setClinics } = useClinicsContext()
-  const [searchType, setSearchType] = useState(SearchType.Address)
+  const { searchType, setSearchType } = useSearchContext()
+
   const listRef = useRef<number | string | undefined>(800)
 
   useEffect(() => {
@@ -28,15 +32,13 @@ export const ClinicsList: FC<ClinicsListProps> = ({ onItemClick }) => {
     )?.clientHeight
   }, [])
 
-  const searchTypeInputHandleChange: ChangeEventHandler<
-    HTMLInputElement
-  > = e => {
+  const handleRadioChange: ChangeEventHandler<HTMLInputElement> = e => {
     setSearchType(
       e.target.id.toUpperCase().split('-').reverse()[0] as SearchType
     )
   }
 
-  const inputHandleChange: ChangeEventHandler<HTMLInputElement> = debounce(
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = debounce(
     300,
     (e, type: SearchType = searchType) => {
       setClinics(filteredClinics(clinicsJSON, type, e.target.value))
@@ -44,30 +46,17 @@ export const ClinicsList: FC<ClinicsListProps> = ({ onItemClick }) => {
   )
 
   return (
-    <>
-      <div className="clinics__meta">
-        <SearchSwitch
-          searchMode={searchType}
-          searchModeInputHandleChange={searchTypeInputHandleChange}
-        />
-        <p className="clinics__counter">
-          Всего: <span className="clinics__quantity">{clinics.length}</span>
-        </p>
-      </div>
-      <div className="clinics__field">
-        <input
-          className="clinics__input"
-          placeholder={`Поиск по ${
-            searchType === SearchType.Address ? 'адресу' : 'id'
-          }`}
-          onChange={inputHandleChange}
-        />
+    <div className="clinics">
+      <div className="clinics__search">
+        <Search.Tabs searchMode={searchType} onChange={handleRadioChange} />
+        <Search.Counter count={clinics.length} />
+        <Search.Input searchType={searchType} onChange={handleInputChange} />
       </div>
       <div>
         <AutoSizer>
           {({ width, height }) => (
             <VirtualList
-              className="clinics"
+              className="clinics__list"
               width={width}
               height={height}
               rowHeight={80}
@@ -79,9 +68,9 @@ export const ClinicsList: FC<ClinicsListProps> = ({ onItemClick }) => {
                 const { id, name, address, coordinates } = clinics[index]
                 return (
                   <div
+                    key={key}
                     className="clinics__item"
                     style={style}
-                    key={key}
                     onClick={() =>
                       onItemClick({
                         coordinates: {
@@ -90,7 +79,7 @@ export const ClinicsList: FC<ClinicsListProps> = ({ onItemClick }) => {
                         },
                       })
                     }>
-                    <p style={{ color: 'blue' }}>{id}</p>
+                    <p className="clinics__id">{id}</p>
                     <p>{address}</p>
                     <p>{name}</p>
                   </div>
@@ -100,6 +89,6 @@ export const ClinicsList: FC<ClinicsListProps> = ({ onItemClick }) => {
           )}
         </AutoSizer>
       </div>
-    </>
+    </div>
   )
 }

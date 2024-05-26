@@ -5,22 +5,22 @@ import {
   SetStateAction,
   useContext,
 } from 'react'
-import type { Clinics } from '../shared/types'
+import type { ClinicsType } from '../shared/types'
 
 type InitialState<State> = {
   clinics: State
   setClinics: Dispatch<SetStateAction<State>>
 }
 
-const ClinicsContext = createContext<InitialState<Clinics>>(
-  {} as InitialState<Clinics>
+const ClinicsContext = createContext<InitialState<ClinicsType>>(
+  {} as InitialState<ClinicsType>
 )
 
 export const ClinicsContextProvider = ({
   initialState,
   children,
 }: {
-  initialState: InitialState<Clinics>
+  initialState: InitialState<ClinicsType>
   children: ReactNode
 }) => {
   return (

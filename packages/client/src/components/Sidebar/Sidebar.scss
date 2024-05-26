@@ -1,8 +1,6 @@
 .sidebar {
   display: grid;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto 1fr;
   gap: $scale-3;
-
   height: 100%;
-  padding-right: $scale-4;
 }

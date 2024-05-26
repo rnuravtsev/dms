@@ -1,14 +1,22 @@
-import './assets/styles/index.scss'
-import { Layout } from './pages/layout/Layout'
+import { useState } from 'react'
 import { ClinicsContextProvider } from './context/clinics'
 import { clinics as clinicsJSON } from './shared/adapters/clinicsAdapter'
-import { useState } from 'react'
+import { Header } from './layout/Header/Header'
+import { Main } from './layout/Main/Main'
+import { Footer } from './layout/Footer/Footer'
+
+import './App.scss'
 
 export function App() {
   const [clinics, setClinics] = useState(() => clinicsJSON)
+
   return (
     <ClinicsContextProvider initialState={{ clinics, setClinics }}>
-      <Layout />
+      <div className="app">
+        <Header className="app__header" />
+        <Main className="app__main" />
+        <Footer className="app__footer" />
+      </div>
     </ClinicsContextProvider>
   )
 }

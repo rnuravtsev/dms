@@ -1,15 +1,17 @@
-import { Clinics } from '../../shared/types'
+import { ClinicsType } from '../../shared/types'
 import { SearchType } from './types'
 
 export const filterBy = {
-  [SearchType.Address]: (el: ElementOfArray<Clinics>, value: string) =>
+  [SearchType.Address]: (el: ElementOfArray<ClinicsType>, value: string) =>
     el?.address.toLowerCase().includes(value.toLowerCase()),
-  [SearchType.Id]: (el: ElementOfArray<Clinics>, value: string) =>
+  [SearchType.Name]: (el: ElementOfArray<ClinicsType>, value: string) =>
+    el?.name.toLowerCase().includes(value.toLowerCase()),
+  [SearchType.Id]: (el: ElementOfArray<ClinicsType>, value: string) =>
     String(el?.id).includes(value),
 }
 
 export const filteredClinics = (
-  clinics: Clinics,
+  clinics: ClinicsType,
   type: SearchType,
   value: string
 ) => {

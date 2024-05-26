@@ -1,8 +1,6 @@
-// custom scroll-bar
 @mixin custom-scroll-bar() {
   &::-webkit-scrollbar {
     width: 8px;
-    height: 10px;
     border-radius: 10px;
   }
 
@@ -16,7 +14,6 @@
   }
 }
 
-// no scroll bar
 @mixin no-scroll-bar() {
   &::-webkit-scrollbar {
     width: 0;

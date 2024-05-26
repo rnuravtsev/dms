@@ -1,24 +1,25 @@
 import classNames from 'classnames'
 import type { FC } from 'react'
+import { useCallback } from 'react'
 import {
   YMap,
-  YMapDefaultSchemeLayer,
-  YMapDefaultFeaturesLayer,
-  YMapComponentsProvider,
-  YMapMarker,
-  YMapControls,
-  YMapZoomControl,
-  YMapGeolocationControl,
   YMapCollection,
+  YMapComponentsProvider,
+  YMapControls,
+  YMapDefaultFeaturesLayer,
+  YMapDefaultSchemeLayer,
+  YMapGeolocationControl,
   YMapHint,
+  YMapMarker,
+  YMapZoomControl,
 } from 'ymap3-components'
 import { YMapLocationRequest } from '@yandex/ymaps3-types'
 import MapPin from '../../assets/icons/map-pin.svg?react'
-
-import './Map.scss'
-import { useCallback } from 'react'
-import { MyHint } from './MyHint'
 import { useClinicsContext } from '../../context/clinics'
+import type { Hint } from 'ymap3-components/dist/src/components/YMapHint'
+import { MyHint as MyHintType } from './types'
+import './Map.scss'
+import { MyHint } from './MyHint'
 
 type MapProps = {
   className?: string
@@ -26,7 +27,10 @@ type MapProps = {
 }
 
 export const Map: FC<MapProps> = ({ className = '', mapCenter }) => {
-  const getHint = useCallback(object => object?.properties?.hint, [])
+  const getHint = useCallback(
+    (hint: Hint) => hint?.properties?.hint as MyHintType,
+    []
+  )
 
   const { clinics } = useClinicsContext()
 

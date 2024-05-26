@@ -1,12 +1,15 @@
 import classNames from 'classnames'
 import type { FC } from 'react'
 import { useCallback, useState } from 'react'
-import './Main.scss'
+
 import { Map } from '../../components/Map/Map'
-import { location } from './utils'
-import { ClinicsList } from '../../components/ClinicsList/ClinicsList'
-import { Clinics } from '../../shared/types'
+import { Clinics } from '../../components/Clinics/Clinics'
+import { Search } from '../../components/Search'
 import { Sidebar } from '../../components/Sidebar/Sidebar'
+import { ClinicsType } from '../../shared/types'
+
+import { location } from './utils'
+import './Main.scss'
 
 type MainProps = {
   className?: string
@@ -16,7 +19,7 @@ export const Main: FC<MainProps> = ({ className = '' }) => {
   const [mapCenter, setMapCenter] = useState(location)
 
   const handleClinicClick = useCallback(
-    ({ coordinates }: Pick<ElementOfArray<Clinics>, 'coordinates'>) => {
+    ({ coordinates }: Pick<ElementOfArray<ClinicsType>, 'coordinates'>) => {
       setMapCenter({
         center: [+coordinates.longitude, +coordinates.latitude],
         zoom: 16,
@@ -27,9 +30,11 @@ export const Main: FC<MainProps> = ({ className = '' }) => {
   )
 
   return (
-    <main className={classNames('main box', className)}>
+    <main className={classNames(className, 'main box')}>
       <Sidebar>
-        <ClinicsList onItemClick={handleClinicClick} />
+        <Search>
+          <Clinics onItemClick={handleClinicClick} />
+        </Search>
       </Sidebar>
       <Map mapCenter={mapCenter} />
     </main>

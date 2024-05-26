@@ -9,7 +9,7 @@ type HeaderProps = {
 
 export const Header: FC<HeaderProps> = ({ className = '' }) => {
   return (
-    <header className={classNames('header box', className)}>
+    <header className={classNames(className, 'header box')}>
       <div>
         VH<span className="header__exclamation-mark">!</span>
       </div>
