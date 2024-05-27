@@ -1,9 +1,11 @@
 .map {
   display: grid;
   place-items: center;
+
   height: 100%;
-  box-shadow: $shadow-default;
+
   border-radius: $border-radius-default;
+  box-shadow: $shadow-default;
 
   canvas {
     border-radius: $border-radius-default;
