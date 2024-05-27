@@ -12,13 +12,18 @@
 
   padding-bottom: $scale-4;
 
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid $grey;
 }
 
 .clinics__list {
   @include mixins.custom-scroll-bar();
+  border-radius: $border-radius-default;
 
   max-width: 450px;
+
+  &:focus-visible {
+    outline: $outline-default;
+  }
 }
 
 .clinics__item {
@@ -42,11 +47,11 @@
   -webkit-line-clamp: 4;
 
   &:hover {
-    background-color: papayawhip;
+    background-color: rgb(255, 165, 0, 0.2);
   }
 
   .clinics__id {
-    color: blue;
+    color: $primary;
   }
 
   p {
