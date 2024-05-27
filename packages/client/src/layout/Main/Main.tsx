@@ -30,7 +30,7 @@ export const Main: FC<MainProps> = ({ className = '' }) => {
   )
 
   return (
-    <main className={classNames(className, 'main box')}>
+    <main className={classNames(className, 'main')}>
       <Sidebar>
         <Search>
           <Clinics onItemClick={handleClinicClick} />
