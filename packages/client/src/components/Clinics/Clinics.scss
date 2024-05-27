@@ -17,9 +17,9 @@
 
 .clinics__list {
   @include mixins.custom-scroll-bar();
-  border-radius: $border-radius-default;
 
   max-width: 450px;
+  border-radius: $border-radius-default;
 
   &:focus-visible {
     outline: $outline-default;
@@ -47,7 +47,7 @@
   -webkit-line-clamp: 4;
 
   &:hover {
-    background-color: rgb(255, 165, 0, 0.2);
+    background-color: rgb(255 165 0 / 20%);
   }
 
   .clinics__id {
