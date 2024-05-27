@@ -1,9 +1,12 @@
 .spinner {
-  color: lightgrey;
   position: relative;
+
   display: inline-block;
+
   width: 80px;
   height: 80px;
+
+  color: lightgrey;
 }
 
 .spinner div {

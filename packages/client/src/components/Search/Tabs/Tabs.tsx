@@ -41,7 +41,7 @@ export const Tabs: FC<SearchTypeProps> = props => {
             <label
               key={label}
               className={classNames('search-tab__label', {
-                'search-tab__input_active': isActive,
+                // 'search-tab__input_active': isActive,
               })}>
               <input
                 id={id}

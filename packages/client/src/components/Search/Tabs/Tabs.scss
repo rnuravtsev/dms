@@ -9,7 +9,8 @@
 }
 
 .search-tab__input {
-  display: none;
+  position: absolute;
+  appearance: none;
   margin-right: $scale-1;
 }
 
@@ -26,9 +27,13 @@
   &:hover {
     cursor: pointer;
   }
-}
 
-.search-tab__input_active {
-  color: white;
-  background-color: blue;
+  &:has(.search-tab__input:checked) {
+    color: white;
+    background-color: blue;
+  }
+
+  &:has(.search-tab__input:checked:focus) {
+    outline: 2px solid orange;
+  }
 }
