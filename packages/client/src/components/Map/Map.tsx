@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { FC } from 'react'
+import { FC, useState } from 'react'
 import { useCallback } from 'react'
 import {
   YMap,
@@ -14,12 +14,14 @@ import {
   YMapZoomControl,
 } from 'ymap3-components'
 import { YMapLocationRequest } from '@yandex/ymaps3-types'
+import type { Hint } from 'ymap3-components/dist/src/components/YMapHint'
 import MapPin from '../../assets/icons/map-pin.svg?react'
 import { useClinicsContext } from '../../context/clinics'
-import type { Hint } from 'ymap3-components/dist/src/components/YMapHint'
 import { MyHint as MyHintType } from './types'
-import './Map.scss'
 import { MyHint } from './MyHint'
+import { Spinner } from '../Spinner'
+
+import './Map.scss'
 
 type MapProps = {
   className?: string
@@ -27,6 +29,7 @@ type MapProps = {
 }
 
 export const Map: FC<MapProps> = ({ className = '', mapCenter }) => {
+  const [isLoading, setLoading] = useState(true)
   const getHint = useCallback(
     (hint: Hint) => hint?.properties?.hint as MyHintType,
     []
@@ -34,10 +37,16 @@ export const Map: FC<MapProps> = ({ className = '', mapCenter }) => {
 
   const { clinics } = useClinicsContext()
 
+  const handleMapLoad = () => {
+    setLoading(false)
+  }
+
   return (
     <div className={classNames('map', className)}>
+      {isLoading && <Spinner />}
       <YMapComponentsProvider
-        apiKey={import.meta.env.VITE_YANDEX_API as string}>
+        apiKey={import.meta.env.VITE_YANDEX_API as string}
+        onLoad={handleMapLoad}>
         <YMap key="map" location={mapCenter} mode="vector" theme="dark">
           <YMapDefaultSchemeLayer />
           <YMapDefaultFeaturesLayer />
