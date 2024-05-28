@@ -11,12 +11,12 @@ export function App() {
   const [clinics, setClinics] = useState(() => clinicsJSON)
 
   return (
-    <ClinicsContextProvider initialState={{ clinics, setClinics }}>
-      <div className="app">
-        <Header className="app__header" />
+    <div className="app">
+      <Header className="app__header" />
+      <ClinicsContextProvider initialState={{ clinics, setClinics }}>
         <Main className="app__main" />
-        <Footer className="app__footer" />
-      </div>
-    </ClinicsContextProvider>
+      </ClinicsContextProvider>
+      <Footer className="app__footer" />
+    </div>
   )
 }

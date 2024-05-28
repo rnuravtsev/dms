@@ -7,7 +7,6 @@ import './Input.scss'
 
 interface InputProps {
   className?: string
-  searchType: SearchType
   onChange: ChangeEventHandler<HTMLInputElement>
 }
 
@@ -18,8 +17,9 @@ const placeholderMap: Record<SearchType, string> = {
 }
 
 export const Input: FC<InputProps> = props => {
-  const { searchInputValue, setSearchInputValue } = useSearchContext()
-  const { className = '', searchType, onChange } = props
+  const { searchInputValue, setSearchInputValue, searchType } =
+    useSearchContext()
+  const { className = '', onChange } = props
 
   return (
     <input

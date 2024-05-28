@@ -3,10 +3,10 @@ import type { ChangeEventHandler, FC } from 'react'
 
 import { SearchType } from '../../Clinics/types'
 import './Tabs.scss'
+import { useSearchContext } from '../../../context/search'
 
 type SearchTypeProps = {
   className?: string
-  searchMode: SearchType
   onChange: ChangeEventHandler<HTMLInputElement>
 }
 
@@ -29,13 +29,14 @@ const inputs = [
 ]
 
 export const Tabs: FC<SearchTypeProps> = props => {
-  const { className = '', searchMode, onChange } = props
+  const { className = '', onChange } = props
+  const { searchType } = useSearchContext()
 
   return (
     <div className={classNames('search-tabs', className)}>
       <div className="search-tabs__inputs">
         {inputs.map(({ id, type, label }) => {
-          const isActive = searchMode === type
+          const isActive = searchType === type
 
           return (
             <label

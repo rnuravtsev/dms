@@ -1,5 +1,5 @@
 import { FC, useCallback } from 'react'
-import { ChangeEventHandler, useEffect, useRef } from 'react'
+import { ChangeEventHandler } from 'react'
 import { debounce } from 'throttle-debounce'
 import VirtualList from 'react-virtualized/dist/es/List'
 import AutoSizer from 'react-virtualized/dist/es/AutoSizer'
@@ -12,6 +12,7 @@ import { filteredClinics } from './utils'
 import { Search } from '../Search'
 import { useSearchContext } from '../../context/search'
 import './Clinics.scss'
+import { useClientHeight } from './useClientHeight'
 
 type ClinicsListProps = {
   className?: string
@@ -21,21 +22,15 @@ type ClinicsListProps = {
 }
 
 export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
+  useClientHeight()
+
   const { clinics, setClinics } = useClinicsContext()
   const { searchType, setSearchType, searchInputValue, setSearchInputValue } =
     useSearchContext()
 
-  const listRef = useRef<number | string | undefined>(800)
-
   const clearInputValue = useCallback(() => {
     setSearchInputValue('')
     setClinics(filteredClinics(clinicsJSON, searchType, ''))
-  }, [])
-
-  useEffect(() => {
-    listRef.current = document?.querySelector(
-      '.infinite-scroll-component__outerdiv'
-    )?.clientHeight
   }, [])
 
   const handleTabChange: ChangeEventHandler<HTMLInputElement> = e => {
@@ -58,9 +53,9 @@ export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
   return (
     <div className="clinics">
       <div className="clinics__search">
-        <Search.Tabs searchMode={searchType} onChange={handleTabChange} />
+        <Search.Tabs onChange={handleTabChange} />
         <Search.Counter count={clinics.length} />
-        <Search.Input searchType={searchType} onChange={handleInputChange} />
+        <Search.Input onChange={handleInputChange} />
       </div>
       <div>
         <AutoSizer>
