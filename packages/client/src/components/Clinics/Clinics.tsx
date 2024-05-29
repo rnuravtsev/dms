@@ -1,18 +1,25 @@
-import { FC, useCallback } from 'react'
+import { ChangeEvent, FC, useCallback } from 'react'
 import { ChangeEventHandler } from 'react'
 import { debounce } from 'throttle-debounce'
 import VirtualList from 'react-virtualized/dist/es/List'
 import AutoSizer from 'react-virtualized/dist/es/AutoSizer'
 import { ClinicsType } from '../../shared/types'
 import { clinics as clinicsJSON } from '../../shared/adapters/clinicsAdapter'
-import { useClinicsContext } from '../../context/clinics'
 
 import { SearchType } from './types'
 import { filteredClinics } from './utils'
 import { Search } from '../Search'
-import { useSearchContext } from '../../context/search'
 import './Clinics.scss'
 import { useClientHeight } from './useClientHeight'
+import { useUnit } from 'effector-react'
+import {
+  $clinics,
+  $searchType,
+  $searchValue,
+  updateClinics,
+  updateSearchType,
+  updateSearchValue,
+} from '../../store'
 
 type ClinicsListProps = {
   className?: string
@@ -24,21 +31,32 @@ type ClinicsListProps = {
 export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
   useClientHeight()
 
-  const { clinics, setClinics } = useClinicsContext()
-  const { searchType, setSearchType, searchInputValue, setSearchInputValue } =
-    useSearchContext()
+  const [
+    changeSearchValue,
+    searchType,
+    changeClinics,
+    clinics,
+    changeSearchType,
+  ] = useUnit([
+    updateSearchValue,
+    $searchType,
+    updateClinics,
+    $clinics,
+    updateSearchType,
+  ])
 
   const clearInputValue = useCallback(() => {
-    setSearchInputValue('')
-    setClinics(filteredClinics(clinicsJSON, searchType, ''))
+    changeSearchValue('')
+    changeClinics(filteredClinics(clinicsJSON, searchType, ''))
   }, [])
 
-  const handleTabChange: ChangeEventHandler<HTMLInputElement> = e => {
-    setSearchType(
+  const handleTabChange: ChangeEventHandler<HTMLInputElement> = (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    changeSearchType(
       e.target.id.toUpperCase().split('-').reverse()[0] as SearchType
     )
-
-    if (searchInputValue) {
+    if ($searchValue) {
       clearInputValue()
     }
   }
@@ -46,7 +64,7 @@ export const Clinics: FC<ClinicsListProps> = ({ onItemClick }) => {
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = debounce(
     300,
     (e, type: SearchType = searchType) => {
-      setClinics(filteredClinics(clinicsJSON, type, e.target.value))
+      changeClinics(filteredClinics(clinicsJSON, type, e.target.value))
     }
   )
 

@@ -1,9 +1,11 @@
 import classNames from 'classnames'
 import type { ChangeEventHandler, FC } from 'react'
+import { useUnit } from 'effector-react'
 
+import { $searchType } from '../../../store'
 import { SearchType } from '../../Clinics/types'
+
 import './Tabs.scss'
-import { useSearchContext } from '../../../context/search'
 
 type SearchTypeProps = {
   className?: string
@@ -30,7 +32,7 @@ const inputs = [
 
 export const Tabs: FC<SearchTypeProps> = props => {
   const { className = '', onChange } = props
-  const { searchType } = useSearchContext()
+  const [searchType] = useUnit([$searchType])
 
   return (
     <div className={classNames('search-tabs', className)}>
@@ -39,11 +41,7 @@ export const Tabs: FC<SearchTypeProps> = props => {
           const isActive = searchType === type
 
           return (
-            <label
-              key={label}
-              className={classNames('search-tab__label', {
-                // 'search-tab__input_active': isActive,
-              })}>
+            <label key={label} className="search-tab__label">
               <input
                 id={id}
                 className="search-tab__input"

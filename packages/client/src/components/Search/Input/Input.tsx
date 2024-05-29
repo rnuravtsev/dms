@@ -1,8 +1,10 @@
 import classNames from 'classnames'
 import type { ChangeEventHandler, FC } from 'react'
+import { useUnit } from 'effector-react'
 
 import { SearchType } from '../../Clinics/types'
-import { useSearchContext } from '../../../context/search'
+import { $searchType, $searchValue, updateSearchValue } from '../../../store'
+
 import './Input.scss'
 
 interface InputProps {
@@ -17,18 +19,21 @@ const placeholderMap: Record<SearchType, string> = {
 }
 
 export const Input: FC<InputProps> = props => {
-  const { searchInputValue, setSearchInputValue, searchType } =
-    useSearchContext()
   const { className = '', onChange } = props
+  const [changeSearchValue, searchValue, searchType] = useUnit([
+    updateSearchValue,
+    $searchValue,
+    $searchType,
+  ])
 
   return (
     <input
       className={classNames('input', className)}
       placeholder={`Поиск по ${placeholderMap[searchType]}`}
-      value={searchInputValue}
+      value={searchValue}
       onChange={e => {
         onChange(e)
-        setSearchInputValue(e.target.value)
+        changeSearchValue(e.target.value)
       }}
     />
   )

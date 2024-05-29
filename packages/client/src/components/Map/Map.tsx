@@ -15,11 +15,14 @@ import {
 } from 'ymap3-components'
 import { YMapLocationRequest } from '@yandex/ymaps3-types'
 import type { Hint } from 'ymap3-components/dist/src/components/YMapHint'
+import { useUnit } from 'effector-react'
+
 import MapPin from '../../assets/icons/map-pin.svg?react'
-import { useClinicsContext } from '../../context/clinics'
-import { MyHint as MyHintType } from './types'
-import { MyHint } from './MyHint'
 import { Spinner } from '../Spinner'
+import { $clinics } from '../../store'
+
+import { MyHint } from './MyHint'
+import { MyHint as MyHintType } from './types'
 
 import './Map.scss'
 
@@ -35,7 +38,7 @@ export const Map: FC<MapProps> = ({ className = '', mapCenter }) => {
     []
   )
 
-  const { clinics } = useClinicsContext()
+  const [clinics] = useUnit([$clinics])
 
   const handleMapLoad = () => {
     setLoading(false)
