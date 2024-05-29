@@ -7,13 +7,15 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:effector/recommended',
+    'plugin:effector/scope',
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 11,
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['effector', '@typescript-eslint'],
   rules: {
     '@typescript-eslint/ban-ts-comment': 1,
   },
