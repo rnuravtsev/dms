@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import type { FC } from 'react'
-
 import { useContext } from 'react'
 import { YMapHintContext } from 'ymap3-components'
+
 import type { MyHint as MyHintType } from './types'
 
 import './MyHint.scss'

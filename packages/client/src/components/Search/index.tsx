@@ -1,7 +1,8 @@
-import { Counter } from './Counter/Counter'
-import { Tabs } from './Tabs/Tabs'
-import { Input } from './Input/Input'
 import { ReactNode } from 'react'
+
+import { Counter } from './Counter/Counter'
+import { Input } from './Input/Input'
+import { Tabs } from './Tabs/Tabs'
 
 type SearchProps = { children: ReactNode }
 

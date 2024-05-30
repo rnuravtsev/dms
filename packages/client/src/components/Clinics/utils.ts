@@ -1,4 +1,5 @@
 import { ClinicsType } from '../../shared/types'
+
 import { SearchType } from './types'
 
 export const filterBy = {

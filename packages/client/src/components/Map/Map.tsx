@@ -1,6 +1,8 @@
+// eslint-disable-next-line import/no-unresolved
+import { YMapLocationRequest } from '@yandex/ymaps3-types'
 import classNames from 'classnames'
-import { FC, useState } from 'react'
-import { useCallback } from 'react'
+import { useUnit } from 'effector-react'
+import { FC, useCallback, useState } from 'react'
 import {
   YMap,
   YMapCollection,
@@ -13,17 +15,15 @@ import {
   YMapMarker,
   YMapZoomControl,
 } from 'ymap3-components'
-import { YMapLocationRequest } from '@yandex/ymaps3-types'
 import type { Hint } from 'ymap3-components/dist/src/components/YMapHint'
-import { useUnit } from 'effector-react'
 
+// eslint-disable-next-line import/no-unresolved
 import MapPin from '../../assets/icons/map-pin.svg?react'
-import { Spinner } from '../Spinner'
 import { $clinics } from '../../store'
+import { Spinner } from '../Spinner'
 
 import { MyHint } from './MyHint'
 import { MyHint as MyHintType } from './types'
-
 import './Map.scss'
 
 type MapProps = {

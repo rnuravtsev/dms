@@ -2,8 +2,8 @@ import classNames from 'classnames'
 import type { FC } from 'react'
 import { useCallback, useState } from 'react'
 
-import { Map } from '../../components/Map/Map'
 import { Clinics } from '../../components/Clinics/Clinics'
+import { Map } from '../../components/Map/Map'
 import { Sidebar } from '../../components/Sidebar/Sidebar'
 import { ClinicsType } from '../../shared/types'
 

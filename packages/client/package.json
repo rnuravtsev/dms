@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "lint:fix": "eslint --fix .",
+    "lint:fix": "eslint --fix  ./src",
     "stylelint": "stylelint --fix **/*.scss",
     "test": "jest ./"
   },
@@ -40,6 +40,8 @@
     "classnames": "2.5.1",
     "eslint": "^8.23.0",
     "eslint-plugin-effector": "0.14.0",
+    "eslint-plugin-import": "2.29.1",
+    "eslint-plugin-react": "7.34.2",
     "jest": "^28",
     "jest-environment-jsdom": "^29.0.1",
     "lefthook": "^1.3.9",

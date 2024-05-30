@@ -1,4 +1,5 @@
 import { createEvent, createStore } from 'effector'
+
 import { SearchType } from '../components/Clinics/types'
 import { clinics as clinicsJSON } from '../shared/adapters/clinicsAdapter'
 import { ClinicsType } from '../shared/types'

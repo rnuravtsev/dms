@@ -1,17 +1,11 @@
-import { ChangeEvent, FC, useCallback } from 'react'
-import { ChangeEventHandler } from 'react'
-import { debounce } from 'throttle-debounce'
-import VirtualList from 'react-virtualized/dist/es/List'
-import AutoSizer from 'react-virtualized/dist/es/AutoSizer'
-import { ClinicsType } from '../../shared/types'
-import { clinics as clinicsJSON } from '../../shared/adapters/clinicsAdapter'
-
-import { SearchType } from './types'
-import { filteredClinics } from './utils'
-import { Search } from '../Search'
-import './Clinics.scss'
-import { useClientHeight } from './useClientHeight'
 import { useUnit } from 'effector-react'
+import { ChangeEvent, FC, useCallback, ChangeEventHandler } from 'react'
+import AutoSizer from 'react-virtualized/dist/es/AutoSizer'
+import VirtualList from 'react-virtualized/dist/es/List'
+import { debounce } from 'throttle-debounce'
+
+import { clinics as clinicsJSON } from '../../shared/adapters/clinicsAdapter'
+import { ClinicsType } from '../../shared/types'
 import {
   $clinics,
   $searchType,
@@ -20,6 +14,13 @@ import {
   updateSearchType,
   updateSearchValue,
 } from '../../store'
+import { Search } from '../Search'
+
+import { SearchType } from './types'
+import { useClientHeight } from './useClientHeight'
+import { filteredClinics } from './utils'
+
+import './Clinics.scss'
 
 type ClinicsListProps = {
   className?: string
