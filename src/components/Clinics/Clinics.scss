@@ -33,6 +33,7 @@
 
   overflow: hidden;
   display: -webkit-box;
+  -webkit-box-orient: vertical;
 
   padding: $scale-2;
 
@@ -43,7 +44,6 @@
 
   transition: background-color .25s ease;
 
-  -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
 
   &:hover {
