@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import { useUnit } from 'effector-react'
 import type { FC } from 'react'
 
+import { useThemeSwitch } from '@components/ThemeSwitcher/hooks'
 import { $theme, updateTheme } from '@store/index'
 
 import './ThemeSwitcher.scss'
@@ -12,6 +13,8 @@ interface ThemeSwitcherProps {
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className = '' }) => {
   const [theme, changeTheme] = useUnit([$theme, updateTheme])
+
+  useThemeSwitch()
 
   return (
     <div className={classNames('theme-switcher', className)}>
