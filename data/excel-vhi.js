@@ -2,7 +2,7 @@ import axios from 'axios'
 import dotenv from 'dotenv'
 import XLSX from 'xlsx'
 
-dotenv.config({ path: '.env' })
+dotenv.config({ path: '../.env' })
 
 // Загрузка данных из Excel файла
 const workbook = XLSX.readFile(process.env.VHI_INPUT)
@@ -14,17 +14,17 @@ const formatRequestString = str => {
   return str.replaceAll(' ', '+')
 }
 
-async function geocodeAddress(address) {
+async function getAddressGeoCode(address) {
   const apiKey = process.env.YANDEX_API // Замените на ваш API ключ Яндекс
-  const url = `https://geocode-maps.yandex.ru/1.x/?apikey=327066e5-095c-4c21-bc8e-3c6e71d84ff9&format=json&geocode=${formatRequestString(
-    address
+  const url = `https://geocode-maps.yandex.ru/1.x/?apikey=${apiKey}&format=json&geocode=${formatRequestString(
+    address,
   )}`
 
   try {
     const response = await axios.get(url)
     const coords =
       response.data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
-        ' '
+        ' ',
       )
 
     return {
@@ -37,9 +37,9 @@ async function geocodeAddress(address) {
   }
 }
 
-async function geocodeAddresses() {
-  for (const item of data) {
-    const { longitude, latitude } = await geocodeAddress(item['Address'])
+async function writeFile(addresses) {
+  for (const item of addresses) {
+    const { longitude, latitude } = await getAddressGeoCode(item['Address'])
     item['Longitude'] = longitude || ''
     item['Latitude'] = latitude || ''
   }
@@ -55,7 +55,7 @@ async function geocodeAddresses() {
   const newWorkbook = XLSX.utils.book_new()
   const newSheet = XLSX.utils.json_to_sheet(newData)
   XLSX.utils.book_append_sheet(newWorkbook, newSheet, 'Results')
-  XLSX.writeFile(newWorkbook, 'vhi-output-data.xlsx')
+  XLSX.writeFile(newWorkbook, 'vhi-output-data-test.xlsx')
 }
 
-geocodeAddresses()
+writeFile(data)

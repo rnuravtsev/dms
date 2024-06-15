@@ -20,7 +20,8 @@
       "@shared/*": ["shared/*"],
       "@assets/*": ["assets/*"],
       "@store/*": ["store/*"]
-    }
+    },
+    "types": ["vite/client"]
   },
   "include": [
     "src",

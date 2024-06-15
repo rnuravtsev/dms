@@ -2,6 +2,8 @@ import classNames from 'classnames'
 import { useUnit } from 'effector-react'
 import type { ChangeEventHandler, FC } from 'react'
 
+import { $searchType, $searchValue, updateSearchValue } from '@store/index'
+
 import { SearchType } from '../../Clinics/types'
 
 import './Input.scss'

@@ -21,9 +21,7 @@ import type { Hint } from 'ymap3-components/dist/src/components/YMapHint'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import MapPin from '@assets/icons/map-pin.svg?react'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { $clinics } from '@store'
+import { $clinics } from '@store/index'
 
 import { Spinner } from '../Spinner'
 
