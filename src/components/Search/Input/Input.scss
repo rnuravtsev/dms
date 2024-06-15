@@ -1,0 +1,10 @@
+.input {
+  width: 100%;
+  padding: $scale-2;
+  border: 1px solid $grey;
+  border-radius: $scale-1;
+
+  &:focus {
+    outline: $outline-default;
+  }
+}

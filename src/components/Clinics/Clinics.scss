@@ -1,0 +1,63 @@
+@use "../../assets/styles/mixins";
+
+.clinics {
+  display: contents;
+}
+
+.clinics__search {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: $scale-3;
+  align-items: end;
+
+  padding-bottom: $scale-4;
+
+  border-bottom: 1px solid $grey;
+}
+
+.clinics__list {
+  @include mixins.custom-scroll-bar();
+
+  max-width: 450px;
+  border-radius: $border-radius-default;
+
+  &:focus-visible {
+    outline: $outline-default;
+  }
+}
+
+.clinics__item {
+  cursor: pointer;
+
+  position: relative;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+
+  padding: $scale-2;
+
+  font-size: 14px;
+  text-overflow: ellipsis;
+
+  border-radius: 8px;
+
+  transition: background-color .25s ease;
+
+  -webkit-line-clamp: 4;
+
+  &:hover {
+    background-color: rgb(255 165 0 / 20%);
+  }
+
+  .clinics__id {
+    color: $primary;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.25em;
+    text-wrap: balance;
+  }
+}
+

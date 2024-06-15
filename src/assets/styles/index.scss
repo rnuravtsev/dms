@@ -1,0 +1,15 @@
+@import 'modern-normalize/modern-normalize.css';
+@import 'mixins';
+@import 'fonts';
+@import 'react-virtualized/styles.css';
+
+body {
+  min-width: 920px;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.box {
+  padding: $scale-5;
+  border-radius: $border-radius-default;
+  box-shadow: $shadow-default;
+}

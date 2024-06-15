@@ -1,0 +1,11 @@
+.sidebar {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: $scale-3;
+
+  height: 100%;
+  padding: $scale-4;
+
+  border-radius: $border-radius-default;
+  box-shadow: $shadow-default;
+}

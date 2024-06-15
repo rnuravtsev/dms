@@ -1,0 +1,18 @@
+// colors
+$primary: blue;
+$secondary: orange;
+$white: white;
+$grey: lightgrey;
+
+// gaps
+$scale-1: 4px;
+$scale-2: 8px;
+$scale-3: 12px;
+$scale-4: 16px;
+$scale-5: 20px;
+$scale-6: 24px;
+
+// box
+$border-radius-default: $scale-2;
+$shadow-default: 0 0 10px 1px rgb(5 5 5 / 8%);
+$outline-default: 2px solid $secondary;

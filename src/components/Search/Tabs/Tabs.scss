@@ -1,0 +1,39 @@
+.search-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-tabs__inputs {
+  display: flex;
+  gap: $scale-2;
+}
+
+.search-tab__input {
+  position: absolute;
+  margin-right: $scale-1;
+  appearance: none;
+}
+
+.search-tab__label {
+  display: flex;
+  align-items: center;
+
+  margin: 0;
+  padding: $scale-1 $scale-4;
+
+  border: 1px solid $grey;
+  border-radius: 4px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:has(.search-tab__input:checked) {
+    color: $white;
+    background-color: $primary;
+  }
+
+  &:has(.search-tab__input:checked:focus) {
+    outline: $outline-default;
+  }
+}
