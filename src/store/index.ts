@@ -17,4 +17,10 @@ export const $theme = createStore<ThemeType>('light')
 $searchType.on<SearchType>(updateSearchType, (_, type) => type)
 $searchValue.on<string>(updateSearchValue, (_, value) => value)
 $clinics.on<ClinicsType>(updateClinics, (_, value) => value)
-$theme.on<ThemeType>(updateTheme, (_, value) => value)
+$theme.on<ThemeType>(updateTheme, (_, value) => {
+  if (value === 'dark') {
+    return 'light'
+  }
+
+  return 'dark'
+})

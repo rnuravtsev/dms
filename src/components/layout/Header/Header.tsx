@@ -1,6 +1,8 @@
 import classNames from 'classnames'
 import type { FC } from 'react'
 
+import { ThemeSwitcher } from '@components/ThemeSwitcher'
+
 import './Header.scss'
 
 type HeaderProps = {
@@ -13,6 +15,7 @@ export const Header: FC<HeaderProps> = ({ className = '' }) => {
       <div>
         VH<span className="header__exclamation-mark">!</span>
       </div>
+      <ThemeSwitcher />
     </header>
   )
 }

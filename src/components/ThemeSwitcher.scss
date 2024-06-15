@@ -1,0 +1,97 @@
+.theme-switcher {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  justify-self: flex-end;
+
+  width: 50px;
+}
+
+.theme-switcher__wrapper {
+  position: relative;
+
+  display: flex;
+  gap: 5px;
+  align-items: center;
+
+  width: 100%;
+  min-height: 24px;
+  padding: 2px;
+
+  background-color: #3d3d3d;
+  border-radius: 15px;
+}
+
+.theme-switcher__background {
+  border-radius: 50%;
+  box-shadow: 0 0 10px 5px gray;
+}
+
+.theme-switcher__icon {
+  font-style: normal;
+}
+
+.theme-switcher__icon_sun {
+  order: 2;
+}
+
+.theme-switcher__btn {
+  position: relative;
+
+  width: 22px;
+  height: 22px;
+
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+
+  transition: all 0.5s ease;
+}
+
+
+.theme-switcher__btn:active {
+  animation-name: switch-animation;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+}
+
+.theme-switcher__btn:not(:disabled):hover {
+  opacity: 1;
+  box-shadow: 0 0 2px 2px rgb(26 84 186 / 90%);
+}
+
+.theme-switcher__btn:not(:disabled):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(26 84 186 / 90%);
+}
+
+.app_theme_dark .theme-switcher__btn:not(:disabled):focus {
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+.app_theme_dark .theme-switcher__btn:not(:disabled):hover {
+  box-shadow: 0 0 2px 3px var(--color-secondary);
+}
+
+.theme-switcher__btn_type_light:hover {
+  box-shadow: 0 0 4px 1px rgb(0 0 0 / 40%);
+}
+
+.theme-switcher__btn_type_dark {
+  right: 0;
+}
+
+
+@keyframes switch-animation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

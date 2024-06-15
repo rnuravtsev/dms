@@ -21,7 +21,7 @@ import type { Hint } from 'ymap3-components/dist/src/components/YMapHint'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import MapPin from '@assets/icons/map-pin.svg?react'
-import { $clinics } from '@store/index'
+import { $clinics, $theme } from '@store/index'
 
 import { Spinner } from '../Spinner'
 
@@ -42,7 +42,7 @@ export const Map: FC<MapProps> = ({ className = '', mapCenter }) => {
     [],
   )
 
-  const [clinics] = useUnit([$clinics])
+  const [clinics, theme] = useUnit([$clinics, $theme])
 
   const handleMapLoad = () => {
     setLoading(false)
@@ -54,7 +54,7 @@ export const Map: FC<MapProps> = ({ className = '', mapCenter }) => {
       <YMapComponentsProvider
         apiKey={import.meta.env.VITE_YANDEX_API as string}
         onLoad={handleMapLoad}>
-        <YMap key="map" location={mapCenter} mode="vector" theme="dark">
+        <YMap key="map" location={mapCenter} mode="vector" theme={theme}>
           <YMapDefaultSchemeLayer />
           <YMapDefaultFeaturesLayer />
           <YMapControls position="right">
