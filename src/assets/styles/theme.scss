@@ -1,5 +1,3 @@
-// Темизация
-
 /*
   Цвет имеет hsl-формулу:
   - hue (тон) - значение на цветовом круге
@@ -22,7 +20,6 @@ html {
     --text-color-hue: 0;
     --surface-color-hue: 48; // Оттенок фонового цвета
     --primary-color-hue: 210;
-
     --text-color: hsl(var(--text-color-hue) 0% 0%);
     --background-color: hsl(var(--surface-color-hue) 56% 98%);
     --primary-color: hsl(var(--primary-color-hue) 84% 66%);
@@ -35,7 +32,6 @@ html {
     --text-color-hue: 226;
     --surface-color-hue: 226;
     --primary-color-hue: 16;
-
     --text-color: hsl(var(--text-color-hue) 80% 90%);
     --background-color: hsl(var(--surface-color-hue) 24% 21%);
     --primary-color: hsl(var(--primary-color-hue) 80% 60%);
