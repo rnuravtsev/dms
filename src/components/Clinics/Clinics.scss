@@ -12,7 +12,7 @@
 
   padding-bottom: $scale-4;
 
-  border-bottom: 1px solid $grey;
+  border-bottom: 1px solid var(--primary-color);
 }
 
 .clinics__list {
@@ -47,11 +47,11 @@
   -webkit-line-clamp: 4;
 
   &:hover {
-    background-color: rgb(255 165 0 / 20%);
+    background-color: var(--primary-weak-color);
   }
 
   .clinics__id {
-    color: $primary;
+    color: var(--primary-color);
   }
 
   p {

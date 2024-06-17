@@ -1,28 +1,32 @@
+import { useUnit } from 'effector-react'
 import { useEffect, useLayoutEffect } from 'react'
 
-export const useThemeSwitch = () => {
-  useLayoutEffect(() => {
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? document.documentElement.setAttribute('data-theme', 'dark')
-      : document.documentElement.setAttribute('data-theme', 'light')
-  })
+import { updateTheme } from '@store/index'
 
+export const useThemeSwitch = () => {
+  const [changeThemeStore] = useUnit([updateTheme])
+
+  // Проставляем значение при первом рендере, исходя из темы пользователя
   useEffect(() => {
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? changeThemeStore('dark')
+      : changeThemeStore('light')
+  }, [changeThemeStore])
+
+  // Если тема ОС пользователя сменилась
+  useLayoutEffect(() => {
     const windowThemeChangeHandler = (evt: MediaQueryListEvent) => {
-      if (evt.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark')
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light')
-      }
+      evt.matches ? changeThemeStore('dark') : changeThemeStore('light')
     }
 
     window
       .matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', windowThemeChangeHandler)
 
-    return () =>
+    return () => {
       window
         .matchMedia('(prefers-color-scheme: dark)')
         .removeEventListener('change', windowThemeChangeHandler)
+    }
   })
 }

@@ -1,6 +1,11 @@
+@use '../../../assets/styles/mixins';
+
 .footer {
   display: flex;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
+
 
 .footer__sign {
   display: flex;

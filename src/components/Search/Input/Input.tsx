@@ -32,6 +32,7 @@ export const Input: FC<InputProps> = props => {
       className={classNames('input', className)}
       placeholder={`Поиск по ${placeholderMap[searchType]}`}
       value={searchValue}
+      autoFocus
       onChange={e => {
         onChange(e)
         changeSearchValue(e.target.value)

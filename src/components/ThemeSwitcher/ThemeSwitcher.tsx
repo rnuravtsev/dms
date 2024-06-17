@@ -12,7 +12,7 @@ interface ThemeSwitcherProps {
 }
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className = '' }) => {
-  const [theme, changeTheme] = useUnit([$theme, updateTheme])
+  const [theme, setTheme] = useUnit([$theme, updateTheme])
 
   useThemeSwitch()
 
@@ -22,14 +22,15 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className = '' }) => {
         {theme === 'light' ? (
           <i className="theme-switcher__icon theme-switcher__icon_sun">🌞</i>
         ) : (
-          <i className="theme-switcher__icon theme-switcher__icon_moon">🌜</i>
+          <i className="theme-switcher__icon theme-switcher__icon_moon">🌚</i>
         )}
         <button
-          className={classNames('btn', 'theme-switcher__btn', {
-            'theme-switcher__btn_type_dark': theme === 'dark',
-            'theme-switcher__btn_type_light': theme === 'light',
-          })}
-          onClick={() => changeTheme(theme)}
+          className={classNames(
+            'btn',
+            'theme-switcher__btn',
+            `theme-switcher__btn_type_${theme}`,
+          )}
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           type="button"
           aria-label="Switch between dark and light theme"
         />
