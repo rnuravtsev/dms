@@ -8,8 +8,8 @@
   min-height: 6em;
   padding: $scale-4;
 
-  background-color: $white;
-  border: 1px lightblue solid;
+  background-color: var(--primary-color);
+  border: 1px var(--primary-color) solid;
   border-radius: $border-radius-default;
 }
 
@@ -18,10 +18,10 @@
   margin-bottom: $scale-2;
   font-size: 18px;
   hyphens: auto;
-  color: $primary;
+  color: var(--white);
 }
 
 .hint__address {
   font-size: 14px;
-  color: gray;
+  color: var(--white);
 }
