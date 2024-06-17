@@ -1,8 +1,4 @@
-// colors
-$primary: blue;
-$secondary: orange;
-$white: white;
-$grey: lightgrey;
+// NOTE: для цветов используются css переменные, для лучшего применения темизации
 
 // gaps
 $scale-1: 4px;
@@ -15,4 +11,4 @@ $scale-6: 24px;
 // box
 $border-radius-default: $scale-2;
 $shadow-default: 0 0 10px 1px rgb(5 5 5 / 8%);
-$outline-default: 2px solid $secondary;
+$outline-default: 2px solid var(--primary-color);

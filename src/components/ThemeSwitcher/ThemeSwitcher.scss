@@ -18,13 +18,13 @@
   min-height: 24px;
   padding: 2px;
 
-  background-color: #3d3d3d;
+  background-color: var(--faint-color);
   border-radius: 15px;
 }
 
 .theme-switcher__background {
   border-radius: 50%;
-  box-shadow: 0 0 10px 5px gray;
+  box-shadow: 0 0 10px 5px var(--faint-weak-color);
 }
 
 .theme-switcher__icon {
@@ -57,12 +57,12 @@
 
 .theme-switcher__btn:not(:disabled):hover {
   opacity: 1;
-  box-shadow: 0 0 2px 2px rgb(26 84 186 / 90%);
+  box-shadow: 0 0 2px 2px var(--primary-color);
 }
 
 .theme-switcher__btn:not(:disabled):focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgb(26 84 186 / 90%);
+  box-shadow: 0 0 0 3px var(--primary-color);
 }
 
 .app_theme_dark .theme-switcher__btn:not(:disabled):focus {

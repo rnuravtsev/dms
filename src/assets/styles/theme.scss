@@ -1,0 +1,45 @@
+// Темизация
+/*
+  Цвет имеет hsl-формулу:
+  - hue (тон) - значение на цветовом круге
+    (0-120 - красный, 121-240 - зеленый, 241-360 - синий)
+  - saturation - насыщенность
+  - lightness - яркость
+
+  Любой цвет имеет пару: strong и weak | название strong будем отпускать в именовании
+ */
+
+// Общие оттенки цвета
+:root {
+  --white: hsl(0deg 100% 100%);
+  --faint-weak-color-hue: 247; // Оттенок серого (бледный)
+  --faint-color-hue: 0; // Оттенок серого (насыщенный)
+}
+
+html {
+  &[data-theme='light'] {
+    --text-color-hue: 0;
+    --surface-color-hue: 48; // Оттенок фонового цвета
+    --primary-color-hue: 210;
+
+    --text-color: hsl(var(--text-color-hue) 0% 0%);
+    --background-color: hsl(var(--surface-color-hue) 56% 98%);
+    --primary-color: hsl(var(--primary-color-hue) 84% 66%);
+    --primary-weak-color: hsl(var(--primary-color-hue) 100% 60% / 40%);
+    --faint-weak-color: hsl(var(--faint-weak-color-hue) 24% 87%);
+    --faint-color: hsl(var(--faint-color-hue) 0% 40%);
+  }
+
+  &[data-theme='dark'] {
+    --text-color-hue: 226;
+    --surface-color-hue: 226;
+    --primary-color-hue: 16;
+
+    --text-color: hsl(var(--text-color-hue) 80% 90%);
+    --background-color: hsl(var(--surface-color-hue) 24% 21%);
+    --primary-color: hsl(var(--primary-color-hue) 80% 60%);
+    --primary-weak-color: hsl(var(--primary-color-hue) 100% 60% / 70%);
+    --faint-weak-color: hsl(var(--faint-weak-color-hue) 24% 87%);
+    --faint-color: hsl(var(--faint-color-hue) 0% 80%);
+  }
+}

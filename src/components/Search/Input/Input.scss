@@ -1,8 +1,18 @@
 .input {
+  grid-column: span 2;
+
   width: 100%;
   padding: $scale-2;
-  border: 1px solid $grey;
+
+  color: var(--text-color);
+
+  background-color: var(--primary-weak-color);
+  border: none;
   border-radius: $scale-1;
+
+  &::placeholder {
+    color: var(--faint-color);
+  }
 
   &:focus {
     outline: $outline-default;

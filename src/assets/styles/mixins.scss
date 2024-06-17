@@ -7,7 +7,7 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $grey;
+    background: var(--faint-weak-color);
     border-radius: 10px;
   }
 

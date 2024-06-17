@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import type { FC } from 'react'
 
-import { ThemeSwitcher } from '@components/ThemeSwitcher'
+import { ThemeSwitcher } from '@components/ThemeSwitcher/ThemeSwitcher'
 
 import './Header.scss'
 

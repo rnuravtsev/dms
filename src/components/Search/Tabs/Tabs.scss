@@ -21,7 +21,6 @@
   margin: 0;
   padding: $scale-1 $scale-4;
 
-  border: 1px solid $grey;
   border-radius: 4px;
 
   &:hover {
@@ -29,11 +28,11 @@
   }
 
   &:has(.search-tab__input:checked) {
-    color: $white;
-    background-color: $primary;
+    color: var(--white);
+    background-color: var(--primary-color);
   }
 
   &:has(.search-tab__input:checked:focus) {
-    outline: $outline-default;
+    outline: 1px solid var(--primary-color);
   }
 }
